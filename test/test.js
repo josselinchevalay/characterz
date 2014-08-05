@@ -9,7 +9,7 @@ var Class = require("../lib/Attribute/Attribute.js");
 
 exports.testCharacter = function(test){
     var c = new Character("test");
-    if (c.getName()=== "test") {
+    if (c.Name === "test") {
         test.ok(true, "yes");
     } else {
         test.ok(false, "no");
@@ -20,7 +20,7 @@ exports.testCharacter = function(test){
 
 exports.testAttribute = function(test){
     var a = new Attribute("life", "no die :p ");
-    if (a.getName() === "life") {
+    if (a.Name === "life") {
         test.ok(true, "Attribute can instantiate and getName");
     } else {
         test.ok(false, "Attribute can't instantiate and getName");
@@ -31,7 +31,7 @@ exports.testAttribute = function(test){
 
 exports.testClass = function(test){
     var c = new Class("life");
-    if (c.getName() === "life") {
+    if (c.Name === "life") {
         test.ok(true, "Attribute can instantiate and getName");
     } else {
         test.ok(false, "Attribute can't instantiate and getName");
