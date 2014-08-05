@@ -7,6 +7,8 @@ var Attribute = require("../lib/Attribute/Attribute.js");
 
 var Class = require("../lib/Attribute/Attribute.js");
 
+var Effect = require("../lib/Effect/Effect.js");
+
 exports.testCharacter = function(test){
     var c = new Character("test");
     if (c.Name === "test") {
@@ -39,3 +41,31 @@ exports.testClass = function(test){
 
     test.done();
 };
+
+exports.testEffectIncrease = function(test){
+    var person = new Character("test");
+    var attribute = new Attribute("life", "no die");
+    attribute.Value = 15;
+    person.Attributes[attribute.Name] = attribute;
+    Effect.increase(person, attribute, 10);
+    if (person.Attributes[attribute.Name].Value === 25) {
+        test.ok(true, "work");
+    }   else {
+        test.ok(false, "no work");
+    }
+    test.done();
+};
+
+exports.testEffectDecrease = function(test){
+    var person = new Character("test");
+    var attribute = new Attribute("life", "no die");
+    attribute.Value = 15;
+    person.Attributes[attribute.Name] = attribute;
+    Effect.decrease(person, attribute, 10);
+    if (person.Attributes[attribute.Name].Value === 5) {
+        test.ok(true, "work");
+    }   else {
+        test.ok(false, "no work");
+    }
+    test.done();
+}
