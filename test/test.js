@@ -92,3 +92,13 @@ exports.testCharacteristics = function(test) {
     var characteristics = new Characteristics();
     test.done();
 };
+
+exports.testCharacteristicsOnchanged = function(test){
+    var characteristics = new Characteristics();
+    var attribute = new Attribute("life", "no die");
+    var charac = new Characteristic(attribute, 25);
+    characteristics.addCharacteristic(charac);
+    characteristics.addHandler(attribute.Name, function(old){console.log(old);});
+    
+    test.done();
+};
