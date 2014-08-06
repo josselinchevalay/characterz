@@ -83,3 +83,11 @@ exports.testCharacteristic = function(test) {
 
     test.done();
 }
+
+
+exports.testCharacteristicOnChanged = function(test) {
+    var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
+    characteristic.valueOnChanged = function(old, new_value){console.log("old = "+old);};
+    Characteristic.Value = 15;
+    test.done();
+};
