@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nudoeunit"
+    "test": "./node_modules/.bin/nodeunit"
   },
   "repository": {
     "type": "git",
