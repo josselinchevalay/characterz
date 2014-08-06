@@ -15,13 +15,13 @@ var Characteristic = require("../lib/Characteristic/Characteristic.js");
 
 exports.testCharacter = function(test){
     var c = new Character("test");
-    test(c.Name === "test", "Name should be defined");
+    test.ok(c.Name === "test", "Name should be defined");
     test.done();
 };
 
 exports.testAttribute = function(test){
     var a = new Attribute("life", "no die :p ");
-     test(a.Name === "life", "Name should be defined");
+    test.ok(a.Name === "life", "Name should be defined");
     test.done();
 };
 
