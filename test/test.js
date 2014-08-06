@@ -9,6 +9,8 @@ var Class = require("../lib/Attribute/Attribute.js");
 
 var Effect = require("../lib/Effect/Effect.js");
 
+var Characteristics = require("../lib/Characteristics/Characteristics.js");
+
 var Characteristic = require("../lib/Characteristic/Characteristic.js");
 
 exports.testCharacter = function(test){
@@ -85,9 +87,8 @@ exports.testCharacteristic = function(test) {
 }
 
 
-exports.testCharacteristicOnChanged = function(test) {
+exports.testCharacteristics = function(test) {
     var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
-    characteristic.valueOnChanged = function(old, new_value){console.log("old = "+old);};
-    Characteristic.Value = 15;
+    var characteristics = new Characteristics();
     test.done();
 };
