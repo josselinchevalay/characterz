@@ -9,6 +9,8 @@ var Class = require("../lib/Attribute/Attribute.js");
 
 var Effect = require("../lib/Effect/Effect.js");
 
+var Characteristic = require("../lib/Characteristic/Characteristic.js");
+
 exports.testCharacter = function(test){
     var c = new Character("test");
     if (c.Name === "test") {
@@ -31,6 +33,7 @@ exports.testAttribute = function(test){
     test.done();
 };
 
+
 exports.testClass = function(test){
     var c = new Class("life");
     if (c.Name === "life") {
@@ -43,7 +46,7 @@ exports.testClass = function(test){
 };
 
 exports.testEffectIncrease = function(test){
-    var person = new Character("test");
+    /*var person = new Character("test");
     var attribute = new Attribute("life", "no die");
     attribute.Value = 15;
     person.Attributes[attribute.Name] = attribute;
@@ -52,12 +55,12 @@ exports.testEffectIncrease = function(test){
         test.ok(true, "work");
     }   else {
         test.ok(false, "no work");
-    }
+    }*/
     test.done();
 };
 
 exports.testEffectDecrease = function(test){
-    var person = new Character("test");
+    /*var person = new Character("test");
     var attribute = new Attribute("life", "no die");
     attribute.Value = 15;
     person.Attributes[attribute.Name] = attribute;
@@ -66,6 +69,17 @@ exports.testEffectDecrease = function(test){
         test.ok(true, "work");
     }   else {
         test.ok(false, "no work");
+    }*/
+    test.done();
+}
+
+exports.testCharacteristic = function(test) {
+    var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
+    if(characteristic.Value === 25) {
+        test.ok(true, "Characteristic ok");
+    } else {
+        test.ok(false, "no ok");
     }
+
     test.done();
 }
