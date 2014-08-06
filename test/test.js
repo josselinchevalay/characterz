@@ -97,8 +97,8 @@ exports.testCharacteristicsOnchanged = function(test){
     var characteristics = new Characteristics();
     var attribute = new Attribute("life", "no die");
     var charac = new Characteristic(attribute, 25);
-    characteristics.addCharacteristic(charac);
-    characteristics.addHandler(attribute.Name, function(old){console.log(old);});
-    
+    var testTab = [charac];
+    characteristics.Properties = testTab;
+
     test.done();
 };
