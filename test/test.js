@@ -13,6 +13,8 @@ var Characteristics = require("../lib/Characteristics/Characteristics.js");
 
 var Characteristic = require("../lib/Characteristic/Characteristic.js");
 
+var CharactericListener = require("../lib/Characteristic/CharacteristicListener.js");
+
 var Util = require("../lib/Util/Util.js");
 
 exports.testCharacter = function(test){
@@ -61,6 +63,9 @@ exports.testCharacteristics = function(test) {
 
 exports.testCharacteristicOnChange = function(test) {
     var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
+    var listener = new CharactericListener(characteristic);
+    listener.ValueOnChangeHandler = function(id, o, n){console.log("your %s is %s", id, n);};
+    characteristic.on("ValueOnChange", listener.ValueOnChangeHandler);
     characteristic.Value = 60;
     test.done();
 };
