@@ -13,6 +13,8 @@ var Characteristics = require("../lib/Characteristics/Characteristics.js");
 
 var Characteristic = require("../lib/Characteristic/Characteristic.js");
 
+var Util = require("../lib/Util/Util.js");
+
 exports.testCharacter = function(test){
     var c = new Character("test");
     test.ok(c.Name === "test", "Name should be defined");
@@ -52,6 +54,14 @@ exports.testCharacteristic = function(test) {
 exports.testCharacteristics = function(test) {
     var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
     var characteristics = new Characteristics();
+    test.done();
+};
+
+
+
+exports.testCharacteristicOnChange = function(test) {
+    var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
+    characteristic.Value = 60;
     test.done();
 };
 

@@ -24,6 +24,7 @@
     "url": "https://github.com/josselinchevalay/characterz/issues"
   },
   "devDependencies": {
-    "nodeunit": "~0.9.0"
+    "nodeunit": "~0.9.0",
+    "underscore": "~1.6.0"
   }
 }
