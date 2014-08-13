@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "nodeunit": "~0.9.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "eventemitter3": "~0.1.2"
   }
 }
