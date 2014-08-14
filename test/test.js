@@ -64,8 +64,8 @@ exports.testCharacteristics = function(test) {
 exports.testCharacteristicOnChange = function(test) {
     var characteristic = new Characteristic(new Attribute("life", "no die :p"), 25);
     var listener = new CharactericListener(characteristic);
-    listener.ValueOnChangeHandler = function(id, o, n){console.log("your %s is %s", id, n);};
-    characteristic.on("ValueOnChange", listener.ValueOnChangeHandler);
+    characteristic.Handlers = [function(id, o, n){console.log("your %s is %s", id, n);}];
+    characteristic.on(listener.CHANGED_EVENT_ID, listener.ValueOnChangeHandler);
     characteristic.Value = 60;
     test.done();
 };
