@@ -81,6 +81,7 @@ exports.testCharacteristicsOnchanged = function(test){
     var attribute = new Attribute("life", "no die");
     var charac = new Characteristic(attribute, 25);
     characteristics.Properties= [charac];
+    charac.on("changed:life", function(id, o, n){console.log("my life is %s", n);});
     charac.Value = 60;
     test.done();
 };
