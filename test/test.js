@@ -16,3 +16,12 @@ exports.testCharacter = function(test){
     test.ok(c.Name === "Josselin", "Name should be defined");
     test.done();
 };
+
+exports.testCharacterAttributeChange = function(test){
+    var c = new Character("Josselin");
+    c.on("change:Name", function(){console.log(arguments);});
+    c.Name = "josselin";
+    c.Name = "Josselin";
+    test.ok(c.Name==="Josselin", "Name should be defined");
+    test.done();
+};
