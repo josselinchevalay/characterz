@@ -5,7 +5,7 @@ var Character = require("../lib/Character/Character.js");
 
 var Attribute = require("../lib/Attribute/Attribute.js");
 
-var Class = require("../lib/Attribute/Attribute.js");
+var Class = require("../lib/Class/Class.js");
 
 var Effect = require("../lib/Effect/Effect.js");
 
@@ -45,3 +45,27 @@ exports.testCharacterAttributeChangeHandlersSeparate = function(test) {
     test.ok(c.Name==="josselin", "Name should be defined");
     test.done();
 };
+
+exports.testAttribute = function(test){
+    var a = new Attribute("Endu", "plus de vie", 25);
+    test.ok(a.Value === 25, "attribute should value");
+    test.done();
+};
+
+exports.testEffect = function(test){
+    var e = new Effect();
+    var c = new Character("toto");
+    var life = new Attribute("Life", "no die", 120);
+    c.defineProperty(life.Name, true, true, life.Value);
+    e.decrease(c, "Life", 10);
+    test.ok(c.Life === 110, "should be 110");
+    test.done();
+};
+
+exports.testClassAddAttribute = function(test){
+    var c = new Class("warrior", []);
+    c.addAttribute(new Attribute("Life", "no die", 225));
+    test.ok(c.Attributes.length === 1, "should be 1 ");
+    test.done();
+};
+
