@@ -69,3 +69,15 @@ exports.testClassAddAttribute = function(test){
     test.done();
 };
 
+exports.testCreateCharacter = function(test){
+    var c = new Character("Joss");
+    var cl = new Class("warrior", []);
+    var util = new Util();
+    cl.addAttribute(new Attribute("Life", "no die ", 125));
+    cl.addAttribute(new Attribute("endu", "no die", 75));
+    c = util.CreateCharacter(c, cl);
+    console.log(c);
+    test.ok(c.Life === 125, "should be 125");
+    test.done();
+};
+
