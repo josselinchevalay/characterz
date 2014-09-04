@@ -57,8 +57,19 @@ exports.testEffect = function(test){
     var c = new Character("toto");
     var life = new Attribute("Life", "no die", 120);
     c.defineProperty(life.Name, true, true, life.Value);
-    e.decrease(c, "Life", 10);
+    e.decrease(c, life, 10);
     test.ok(c.Life === 110, "should be 110");
+    test.done();
+};
+
+
+exports.testEffectWithObject = function(test){
+    var e = new Effect();
+    var c = new Character("toto");
+    var life = new Attribute("Life", "no die", 120);
+    c.defineProperty(life.Name, true, true, life);
+    e.decrease(c, life, 10);
+    test.ok(c.Life.Value === 110, "should be 110");
     test.done();
 };
 
@@ -74,10 +85,24 @@ exports.testCreateCharacter = function(test){
     var cl = new Class("warrior", []);
     var util = new Util();
     cl.addAttribute(new Attribute("Life", "no die ", 125));
-    cl.addAttribute(new Attribute("endu", "no die", 75));
+    cl.addAttribute(new Attribute("Endu", "increase life", 75));
     c = util.CreateCharacter(c, cl);
-    console.log(c);
-    test.ok(c.Life === 125, "should be 125");
+    test.ok(c.Life.Value === 125, "should be 125");
     test.done();
 };
 
+
+exports.testbiteCharacter = function(test){
+    var c = new Character("Joss");
+    var cl = new Class("warrior", []);
+    var util = new Util();
+    var effect = new Effect();
+    cl.addAttribute(new Attribute("Life", "no die ", 125));
+    cl.addAttribute(new Attribute("Endu", "increase life", 75));
+    c = util.CreateCharacter(c, cl);
+    c.on("change:Life", function(){console.log("outch i am bitten ");});
+    c.on("change:Endu", function(){console.log("endu")});
+    effect.decrease(c, "Life", 10);
+    test.ok(c.Life.Value === 115, "should be 115");
+    test.done();
+};
