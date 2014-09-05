@@ -11,6 +11,8 @@ var Effect = require("../lib/Effect/Effect.js");
 
 var Util = require("../lib/Util/Util.js");
 
+var Spell = require("../lib/Spell/Spell.js");
+
 exports.testCharacter = function(test){
     var c = new Character("Josselin");
     test.ok(c.Name === "Josselin", "Name should be defined");
@@ -104,5 +106,12 @@ exports.testbiteCharacter = function(test){
     c.on("change:Endu", function(){console.log("endu")});
     effect.decrease(c, "Life", 10);
     test.ok(c.Life.Value === 115, "should be 115");
+    test.done();
+};
+
+
+exports.testSpell = function(test){
+    var bite = new Spell("bite", "bite you", "Physics");
+    test.ok(bite.Name === "bite", "should be bite");
     test.done();
 };
