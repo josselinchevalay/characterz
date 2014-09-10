@@ -115,3 +115,16 @@ exports.testSpell = function(test){
     test.ok(bite.Name === "bite", "should be bite");
     test.done();
 };
+
+exports.testSpellDescription = function(test){
+    var bite = new Spell("bite", "bite you", "Physics");
+    test.ok(bite.Description === "bite you", "should be bite");
+    test.done();
+};
+
+exports.testSpellType = function(test){
+    var bite = new Spell("bite", "bite you", "Physics");
+    test.ok(bite.Type === "Physics", "should be bite");
+    test.done();
+};
+
