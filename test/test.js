@@ -14,6 +14,14 @@ var FinalBonus = require("../lib/Attribute/FinalBonus.js");
 var Attribute = require("../lib/Attribute/Attribute.js");
 
 var DependantAttribute = require("../lib/Attribute/DependantAttribute.js");
+
+var BaseSpell = require("../lib/Spell/BaseSpell.js");
+
+var CharacterJDR = require("../lib/Character/CharacterJDR.js");
+
+var Human = require("../lib/Race/Human.js")
+
+var Elfe = require("../lib/Race/Elfe.js")
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -78,6 +86,34 @@ exports.testDependantAttribute = function(test){
     test.ok(att.FinalValue() == 10, "Base value should 10");
     test.done();
 }
+
+exports.testBaseSpell = function(test){
+    var spell = new BaseSpell();
+    spell.start({}, {});
+    test.ok(1 == 1, "");
+    test.done();
+};
+
+exports.testCreateHumanCharacter = function(test){
+    var humanRace = new Human();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+};
+
+
+exports.testCreateElfeCharacter = function(test){
+    var elfeRace = new Elfe();
+    var perso = new CharacterJDR("sam", "chevalay");
+    elfeRace.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "sam", "Name should joss");
+    test.done();
+};
+
+
 
 /*
 
