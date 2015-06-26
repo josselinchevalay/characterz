@@ -22,6 +22,10 @@ var CharacterJDR = require("../lib/Character/CharacterJDR.js");
 var Human = require("../lib/Race/Human.js")
 
 var Elfe = require("../lib/Race/Elfe.js")
+
+var Halfing = require('../lib/Race/Halfing.js')
+
+var Nain = require('../lib/Race/Nain.js')
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -113,6 +117,24 @@ exports.testCreateElfeCharacter = function(test){
     test.done();
 };
 
+
+exports.testCreateHalfingCharacter = function(test){
+    var halgingRace = new Halfing();
+    var perso = new CharacterJDR("thibaut", "chevalay");
+    halgingRace.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "thibaut", "Name should joss");
+    test.done();
+};
+
+exports.testCreateNainCharacter = function(test){
+    var nainRace = new Nain();
+    var perso = new CharacterJDR("mathieu", "chevalay");
+    nainRace.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "mathieu", "Name should joss");
+    test.done();
+};
 
 
 /*
