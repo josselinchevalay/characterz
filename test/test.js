@@ -26,6 +26,8 @@ var Elfe = require("../lib/Race/Elfe.js")
 var Halfing = require('../lib/Race/Halfing.js')
 
 var Nain = require('../lib/Race/Nain.js')
+
+var Agitator = require('../lib/Career/Agitator.js')
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -133,6 +135,18 @@ exports.testCreateNainCharacter = function(test){
     nainRace.affectTo(perso);
     perso.display();
     test.ok(perso.FirstName == "mathieu", "Name should joss");
+    test.done();
+};
+
+
+exports.testAgitator = function(test) {
+    var humanRace = new Human();
+    var agitator  = new Agitator();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    agitator.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
 };
 
