@@ -29,6 +29,8 @@ var Nain = require('../lib/Race/Nain.js')
 
 var Agitator = require('../lib/Career/Agitator.js')
 
+var Apprentice = require('../lib/Career/Apprentice.js')
+
 var Lootr = require('lootr')
 
 //var Class = require("../lib/Class/Class.js");
@@ -148,6 +150,17 @@ exports.testAgitator = function(test) {
     var perso = new CharacterJDR("joss", "chevalay");
     humanRace.affectTo(perso);
     agitator.affectTo(perso);
+    perso.display();
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+};
+
+exports.testApprentice = function(test) {
+    var humanRace = new Human();
+    var apprentice  = new Apprentice();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    apprentice.affectTo(perso);
     perso.display();
     test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
