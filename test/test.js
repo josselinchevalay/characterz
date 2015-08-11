@@ -179,4 +179,18 @@ exports.testEsquive = function(test) {
     test.ok(1 == 1,  "should win");
     test.done();
 
+};
+
+
+exports.testAgitorCharism = function(test) {
+    var humanRace = new Human();
+    var agitator  = new Agitator();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    agitator.affectTo(perso);
+    var result = perso.Capacities.Charism.test(perso);
+    console.log(result > 0);
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+
 }
