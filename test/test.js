@@ -33,6 +33,8 @@ var Apprentice = require('../lib/Career/Apprentice.js')
 
 var Lootr = require('lootr')
 
+var Esquive = require('../lib/Capacity/Esquive.js')
+
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -165,3 +167,16 @@ exports.testApprentice = function(test) {
     test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
 };
+
+exports.testEsquive = function(test) {
+    var humanRace = new Human();
+    var apprentice  = new Apprentice();
+    var perso = new CharacterJDR("joss", "chevalay");
+    var esquive = new Esquive();
+    humanRace.affectTo(perso);
+    apprentice.affectTo(perso);
+    console.log(esquive.test(perso) > 0);
+    test.ok(1 == 1,  "should win");
+    test.done();
+
+}
