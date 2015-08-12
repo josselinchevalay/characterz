@@ -35,6 +35,7 @@ var Lootr = require('lootr')
 
 var Esquive = require('../lib/Capacity/Esquive.js')
 
+var utils = require('../lib/Util/Util.js')
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -189,6 +190,19 @@ exports.testAgitorCharism = function(test) {
     humanRace.affectTo(perso);
     agitator.affectTo(perso);
     var result = perso.Capacities.Charism.test(perso);
+    console.log(result > 0);
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+
+}
+
+exports.testAgitorCharismVeryHard = function(test) {
+    var humanRace = new Human();
+    var agitator  = new Agitator();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    agitator.affectTo(perso);
+    var result = perso.Capacities.Charism.test(perso, utils.MODIFIER.VERY_HARD);
     console.log(result > 0);
     test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
