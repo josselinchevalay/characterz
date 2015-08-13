@@ -213,7 +213,7 @@ exports.testAgitorCharismVeryHard = function(test) {
 
 exports.testCapacityService = function(test) {
     var perso = new CharacterJDR("joss", "chevalay");
-    var result = CapacityService.get('Charism').test(perso);
+    var result = CapacityService().get('Charism').test(perso);
     console.log(result > 0);
     test.ok(1 == 1 , "ok");
     test.done();
