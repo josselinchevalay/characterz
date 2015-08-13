@@ -36,6 +36,8 @@ var Lootr = require('lootr')
 var Esquive = require('../lib/Capacity/Esquive.js')
 
 var utils = require('../lib/Util/Util.js')
+
+var CapacityService = require("../lib/Services/CapacityService.js")
 //var Class = require("../lib/Class/Class.js");
 
 //var Effect = require("../lib/Effect/Effect.js");
@@ -207,4 +209,12 @@ exports.testAgitorCharismVeryHard = function(test) {
     test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
 
+}
+
+exports.testCapacityService = function(test) {
+    var perso = new CharacterJDR("joss", "chevalay");
+    var result = CapacityService.get('Charism').test(perso);
+    console.log(result > 0);
+    test.ok(1 == 1 , "ok");
+    test.done();
 }
