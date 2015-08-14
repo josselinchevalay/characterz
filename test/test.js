@@ -1,9 +1,7 @@
 /**
 * Unit testing
 */
-//var Character = require("../lib/Character/Character.js");
-
-//var Attribute = require("../lib/Attribute/Attribute.js");
+'use strict';
 
 var BaseAttribute = require("../lib/Attribute/BaseAttribute.js");
 
@@ -33,13 +31,12 @@ var Apprentice = require('../lib/Career/Apprentice.js')
 
 var Lootr = require('lootr')
 
-//var Class = require("../lib/Class/Class.js");
+var Esquive = require('../lib/Capacity/Esquive.js')
 
-//var Effect = require("../lib/Effect/Effect.js");
+var utils = require('../lib/Util/Util.js')
 
-//var Util = require("../lib/Util/Util.js");
+var CapacityService = require("../lib/Services/CapacityService.js")
 
-//var Spell = require("../lib/Spell/Spell.js");
 
 exports.testBaseAttribute = function(test){
     var b = new BaseAttribute(10, 0.0);
@@ -165,3 +162,51 @@ exports.testApprentice = function(test) {
     test.ok(perso.FirstName == "joss", "Name should joss");
     test.done();
 };
+
+exports.testEsquive = function(test) {
+    var humanRace = new Human();
+    var apprentice  = new Apprentice();
+    var perso = new CharacterJDR("joss", "chevalay");
+    var esquive = new Esquive();
+    humanRace.affectTo(perso);
+    apprentice.affectTo(perso);
+    console.log(esquive.test(perso) > 0);
+    test.ok(1 == 1,  "should win");
+    test.done();
+
+};
+
+
+exports.testAgitorCharism = function(test) {
+    var humanRace = new Human();
+    var agitator  = new Agitator();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    agitator.affectTo(perso);
+    var result = perso.Capacities.Charism.test(perso);
+    console.log(result > 0);
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+
+}
+
+exports.testAgitorCharismVeryHard = function(test) {
+    var humanRace = new Human();
+    var agitator  = new Agitator();
+    var perso = new CharacterJDR("joss", "chevalay");
+    humanRace.affectTo(perso);
+    agitator.affectTo(perso);
+    var result = perso.Capacities.Charism.test(perso, utils.MODIFIER.VERY_HARD);
+    console.log(result > 0);
+    test.ok(perso.FirstName == "joss", "Name should joss");
+    test.done();
+
+}
+
+exports.testCapacityService = function(test) {
+    var perso = new CharacterJDR("joss", "chevalay");
+    var result = CapacityService().get('Charism').test(perso);
+    console.log(result > 0);
+    test.ok(1 == 1 , "ok");
+    test.done();
+}
