@@ -1,9 +1,7 @@
 /**
 * Unit testing
 */
-//var Character = require("../lib/Character/Character.js");
-
-//var Attribute = require("../lib/Attribute/Attribute.js");
+'use strict';
 
 var BaseAttribute = require("../lib/Attribute/BaseAttribute.js");
 
@@ -38,13 +36,7 @@ var Esquive = require('../lib/Capacity/Esquive.js')
 var utils = require('../lib/Util/Util.js')
 
 var CapacityService = require("../lib/Services/CapacityService.js")
-//var Class = require("../lib/Class/Class.js");
 
-//var Effect = require("../lib/Effect/Effect.js");
-
-//var Util = require("../lib/Util/Util.js");
-
-//var Spell = require("../lib/Spell/Spell.js");
 
 exports.testBaseAttribute = function(test){
     var b = new BaseAttribute(10, 0.0);
