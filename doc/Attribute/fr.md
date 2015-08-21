@@ -7,7 +7,7 @@ Nous allons ici expliqué la hierarchie et les différentes classes des attribut
 Organisation
 ============
 
-
+```
 -----------------------------------------------------
 |                    BaseAttribut                   |
 -----------------------------------------------------                                       
@@ -26,6 +26,7 @@ Organisation
 ------------------
 | characteristic |
 ------------------
+```
 
 Dans lib/Attribute vous retrouverez toutes les classes qui permettent de gérer
 les attribut dans votre jeu. Mais qu'est ce qu'un attribut ? 
