@@ -7,7 +7,7 @@ Nous allons ici expliqué la hierarchie et les différentes classes des carrièr
 
 Organisation
 ==============
-
+```
 ---------------
 | BaseCareer  |
 ----------------
@@ -21,7 +21,7 @@ Organisation
 ----------------
 | Agitator     |
 ----------------
-
+```
 
 BaseCareer
 ------------

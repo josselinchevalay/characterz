@@ -6,11 +6,11 @@ Nous allons ici expliqué la hierarchie et les différentes classes des effets
 
 Organisation
 ============
-
+```
 -----------------------
 |       Effect        |
 -----------------------
-
+```
 
 
 Effect
