@@ -8,10 +8,22 @@ Nous allons ici expliqué la hierarchie et les différentes classes
 Organisation
 ============
 
+```
 -----------------------
 |      BaseClass      |
 -----------------------
+         ^
+         |
+-----------------------
+|     JdrClass        |
+-----------------------
+         ^
+         |
+-----------------------
+|      Warrior        |
+-----------------------
 
+```
 
 
 BaseClass

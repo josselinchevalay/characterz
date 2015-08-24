@@ -37,6 +37,7 @@ var utils = require('../lib/Util/Util.js')
 
 var CapacityService = require("../lib/Services/CapacityService.js")
 
+var ClassService = require('../lib/Services/ClassService.js')
 
 exports.testBaseAttribute = function(test){
     var b = new BaseAttribute(10, 0.0);
@@ -208,5 +209,12 @@ exports.testCapacityService = function(test) {
     var result = CapacityService().get('Charism').test(perso);
     console.log(result > 0);
     test.ok(1 == 1 , "ok");
+    test.done();
+}
+
+exports.testClassService = function(test){
+    var perso = new CharacterJDR("joss", "chevalay");
+    var service = ClassService().get("Warrior").affectTo(perso);
+    test.ok(perso.FirstName == "joss", "Name should be joss");
     test.done();
 }
