@@ -6,6 +6,7 @@ Nous allons ici expliqué la hierarchie et les différentes classes des personna
 Organisation
 =============
 
+```
 ---------------------------------------------
 |             BaseCharacter                 |
 ---------------------------------------------
@@ -14,7 +15,7 @@ Organisation
 -------------------------        ----------------------
 | Character (deprecated)|        | CharacterJdr (ex)  |
 -------------------------        ----------------------
-
+```
 
 
 BaseCharacter
