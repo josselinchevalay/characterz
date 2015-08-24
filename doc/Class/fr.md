@@ -40,7 +40,19 @@ JdrClass
 Cette classe permet de définir les comportements généreaux lié à la gestion d'un personnage jdr
 
 ```
-var 
+var  class = new JdrClass();
+```
+
+Warrior
+--------
+Un exemple d'implementation de jdrClass
+
+```
+var moi = new Character("moi", "le mj");
+var warriorClass = new Warrior();
+warriorClass.affectTo(moi); // affect
+moi.Level++;
+warriorClass.levelUp(moi); // level spells 
 ```
 
 
