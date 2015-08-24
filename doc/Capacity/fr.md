@@ -6,6 +6,7 @@ Nous Nous allons ici expliqué la hierarchie et les différentes classes des Cap
 Organisation
 =============
 
+```
 -------------------
 |   BaseCapacity  |
 -------------------
@@ -14,7 +15,7 @@ Organisation
 ------------------
 | Charism  (ex)  |
 ------------------
-
+```
 
 BaseCapacity
 ----------------
