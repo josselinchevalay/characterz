@@ -8,14 +8,14 @@ Organisation
 ============
 
 ```
------------------------------------------------
-|                 BaseService                 |
------------------------------------------------
-        ^                           ^
-        |                           |
----------------------      ---------------------
-|  CapacityServices |      |    ClassServices  |
----------------------      ---------------------
+------------------------------------------------------------------------
+|                            BaseService                               |
+------------------------------------------------------------------------
+        ^                           ^                        ^
+        |                           |                        |
+---------------------      ---------------------         -------------------
+|  CapacityServices |      |    ClassServices  |         |    SpellService |
+---------------------      ---------------------         -------------------
 ```
 
 BaseService
@@ -46,4 +46,13 @@ var moi = new Character("joss", "le barman");
 ClassService().get("Warrior").affectTo(moi); // affect
 moi.Level ++;
 ClassService().get("Warrior").levelUp(moi); // level up
+```
+
+
+SpellService
+--------------
+recupere les instances de spell
+
+```   
+SpellService().get("FireBall").start(new Character('mathieu', 'le wizzard'), new Character('joss', 'le barman'));
 ```

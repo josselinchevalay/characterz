@@ -123,6 +123,99 @@ var force = new Characteristic(50);
 
 
 
+Capacity
+==========
+
+Nous Nous allons ici expliqué la hierarchie et les différentes classes des Capacités
+
+Organisation
+=============
+
+```
+-------------------
+|   BaseCapacity  |
+-------------------
+     ^
+     |
+------------------
+| Charism  (ex)  |
+------------------
+```
+
+BaseCapacity
+----------------
+
+c'est la classe de base des capacité on y explique le comportement de base.
+Vous devrez donc créer vos propres comportement de capacité celle indique dans 
+ce module sont ici à titre d'exemple
+
+```
+var capacity = new BaseCapacity();
+capacity.depend = "SOC";
+capacity.test(character, -30); // le "-30" represente un modificateur de difficulté - => facile + => difficile
+```
+
+Charism (exemple)
+------------------
+
+ceci est un exemple
+
+```
+var charism = new Charism();
+charism.test(character, 0);
+```
+
+Career
+==========
+
+Nous allons ici expliqué la hierarchie et les différentes classes des carrières
+
+
+
+Organisation
+==============
+```
+---------------
+| BaseCareer  |
+----------------
+       ^
+       |
+----------------
+| JdrCareer    |
+----------------
+       ^
+       |
+----------------
+| Agitator     |
+----------------
+```
+
+BaseCareer
+------------
+Cette classe représente la structure d'une carrière. Vous devez vous même définir ce qu'une carrière a pour comportement. Une classe Intermedaire et final et a votre disposition pour exemple
+
+```
+var forgeron = new BaseCareer();
+```
+
+JdrCareer
+------------
+Cette classe exprime une vision du métier selon le jdr. Nous aurions peu exprimer une autre façon de faire
+
+```
+var jdr = new JdrCareer();
+```
+
+Agitator
+-----------
+c'est une classe final pouvant être affecté a un joueur toujours à titre d'exemple.
+
+```
+var perso = new Character();
+var job   = new Agitator();
+job.affectTo(perso);
+```
+
 Character
 ==========
 
@@ -168,20 +261,52 @@ Nous allons ici expliqué la hierarchie et les différentes classes
 
 Organisation
 ============
+
 ```
 -----------------------
 |      BaseClass      |
 -----------------------
+         ^
+         |
+-----------------------
+|     JdrClass        |
+-----------------------
+         ^
+         |
+-----------------------
+|      Warrior        |
+-----------------------
+
 ```
 
 
 BaseClass
 -----------
 
-Cette classe permet de definir les comportement généreaux des classes de votre jeu.
+Cette classe permet de définir les comportement généreaux des classes de votre jeu.
 
 ```
 var maclasse = new BaseClass();
+```
+
+JdrClass
+------------
+Cette classe permet de définir les comportements généreaux lié à la gestion d'un personnage jdr
+
+```
+var  class = new JdrClass();
+```
+
+Warrior
+--------
+Un exemple d'implementation de jdrClass
+
+```
+var moi = new Character("moi", "le mj");
+var warriorClass = new Warrior();
+warriorClass.affectTo(moi); // affect
+moi.Level++;
+warriorClass.levelUp(moi); // level spells 
 ```
 
 
@@ -211,7 +336,6 @@ var person = new Character();
 
 effect.descrease(person, "Life", 5);
 ``` 
-
 
 Attribute
 ==========
@@ -268,7 +392,6 @@ var human = new Human();
 human.affectTo(me);
 ```
 
-
 Services
 ==========
 
@@ -279,14 +402,14 @@ Organisation
 ============
 
 ```
-----------------
-| BaseService  |
-----------------
-        ^
-        |
----------------------
-|  CapacityServices |
----------------------
+------------------------------------------------------------------------
+|                            BaseService                               |
+------------------------------------------------------------------------
+        ^                           ^                        ^
+        |                           |                        |
+---------------------      ---------------------         -------------------
+|  CapacityServices |      |    ClassServices  |         |    SpellService |
+---------------------      ---------------------         -------------------
 ```
 
 BaseService
@@ -308,6 +431,25 @@ var service = new CapaticyService();
 charism = service.get('Charism');
 ```
 
+ClassServices
+---------------
+Recuperere des instance de class
+
+```
+var moi = new Character("joss", "le barman");
+ClassService().get("Warrior").affectTo(moi); // affect
+moi.Level ++;
+ClassService().get("Warrior").levelUp(moi); // level up
+```
+
+
+SpellService
+--------------
+recupere les instances de spell
+
+```   
+SpellService().get("FireBall").start(new Character('mathieu', 'le wizzard'), new Character('joss', 'le barman'));
+```
 
 Attribute
 ==========
@@ -321,12 +463,39 @@ Organisation
 --------------
 | BaseSpell  |
 --------------
+      ^
+      |
+-----------------
+| FireBall (ex) |
+-----------------
 ```
 
 BaseSpell
 ------------
 expose le comportement de base des spell
 
+```
+var spell  = new BaseSpell();
+spell.depend = "IN"; // depend de l'intelligence
+spell.start = function(caster, target) {
+    console.log("yop");
+}
+```
+
+FireBall
+---------
+
+exemple avec un sort de boule de feu
+
+```
+var speller = new CharacterJDR("mathieu", "le wizzard");
+var target  = new CharacterJDR("joss", "le barman");
+speller.IN = 50;
+target.B = 10;    
+SpellService().get("FireBall").start(speller, target);
+var result = target.B == 10 || target.B == 9;
+console.log(result);
+```
 
 Util
 ==============
@@ -339,5 +508,3 @@ Util.des(100);
 // value of success
 console.log(Util.isSucces(56, 60)); // -4 
 ```
-
-
