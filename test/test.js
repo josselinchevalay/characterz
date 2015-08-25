@@ -39,6 +39,8 @@ var CapacityService = require("../lib/Services/CapacityService.js")
 
 var ClassService = require('../lib/Services/ClassService.js')
 
+var SpellService = require('../lib/Services/SpellService.js')
+
 exports.testBaseAttribute = function(test){
     var b = new BaseAttribute(10, 0.0);
     test.ok(b.BaseValue == 10, "Base value should 10");
@@ -216,5 +218,18 @@ exports.testClassService = function(test){
     var perso = new CharacterJDR("joss", "chevalay");
     var service = ClassService().get("Warrior").affectTo(perso);
     test.ok(perso.FirstName == "joss", "Name should be joss");
+    test.done();
+}
+
+
+exports.testSpellService = function(test){
+    var speller = new CharacterJDR("mathieu", "le wizzard");
+    var target  = new CharacterJDR("joss", "le barman");
+    speller.IN = 50;
+    target.B = 10;    
+    SpellService().get("FireBall").start(speller, target);
+    var result = target.B == 10 || target.B == 9;
+    console.log(target.B);
+    test.ok(result, "should be 9 or 10");
     test.done();
 }
